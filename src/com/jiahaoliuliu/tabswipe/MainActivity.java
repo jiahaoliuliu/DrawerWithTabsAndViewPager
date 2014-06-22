@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 
 public class MainActivity extends SherlockFragmentActivity {
 
@@ -62,25 +63,31 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		
 		// Initialization
+		
+		final TabHost tabHost=(TabHost)findViewById(android.R.id.tabhost);
+		tabHost.setup();
+		
+		for (int i = 0; i < tabs.length; i++) {
+			String tabName = tabs[i];
+			TabHost.TabSpec spec=tabHost.newTabSpec(tabName);
+			spec.setContent(R.id.fakeTabContent);
+			spec.setIndicator(tabName);
+			tabHost.addTab(spec);
+			
+		}
+
+		//tabHost.setCurrentTab(0);
+
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getSupportActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 		
 		viewPager.setAdapter(mAdapter);
-		/*
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		for (String tabName: tabs) {
-			actionBar.addTab(actionBar.newTab().setText(tabName).setTabListener(this));
-		}*/
-		
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int position) {
-				/*
-				 * actionBar.setSelectedNavigationItem(position);
-				 */
+				tabHost.setCurrentTab(position);
 			}
 			
 			@Override
@@ -97,23 +104,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		});
 	}
 
-	/*
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		viewPager.setCurrentItem(tab.getPosition());
-		
-	}
-
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-	}
-
-	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
-	}*/
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
