@@ -28,7 +28,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	private ActionBar actionBar;
 
 	// Tabs titles
-	private String[] tabs = {"Top Rated", "Games", "Movies"};
+	private String[] tabsTitles = {"Tab1", "Tab2", "Tab3", "Tab4"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +67,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		final TabHost tabHost=(TabHost)findViewById(android.R.id.tabhost);
 		tabHost.setup();
 		
-		for (int i = 0; i < tabs.length; i++) {
-			String tabName = tabs[i];
+		for (int i = 0; i < tabsTitles.length; i++) {
+			String tabName = tabsTitles[i];
 			TabHost.TabSpec spec=tabHost.newTabSpec(tabName);
 			spec.setContent(R.id.fakeTabContent);
 			spec.setIndicator(tabName);
@@ -77,16 +77,14 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getSupportActionBar();
-		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-		
+		mAdapter = new TabsPagerAdapter(getSupportFragmentManager(), tabsTitles.length);
 		viewPager.setAdapter(mAdapter);
-		
 		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
 			
 			@Override
 			public void onTabChanged(String tabId) {
-				for (int i = 0; i < tabs.length; i++) {
-					if (tabId.equals(tabs[i])) {
+				for (int i = 0; i < tabsTitles.length; i++) {
+					if (tabId.equals(tabsTitles[i])) {
 						viewPager.setCurrentItem(i);
 						break;
 					}

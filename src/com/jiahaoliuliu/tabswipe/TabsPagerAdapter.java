@@ -6,19 +6,23 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter{
 
-	public TabsPagerAdapter(FragmentManager fm) {
+	/**
+	 * The total number of tabs
+	 */
+	private int totalTabs;
+
+	public TabsPagerAdapter(FragmentManager fm, int totalTabs) {
 		super(fm);
+		this.totalTabs = totalTabs;
 	}
-	
+
 	@Override
 	public Fragment getItem(int index) {
-		switch(index) {
+		switch(index % 2) {
 		case 0:
-			return new TopRatedFragment();
+			return new BlackFragment();
 		case 1:
-			return new GamesFragment();
-		case 2:
-			return new MoviesFragment();
+			return new WhiteFragment();
 		}
 		
 		return null;
@@ -26,6 +30,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter{
 	
 	@Override
 	public int getCount() {
-		return 3;
+		return totalTabs;
 	}
 }

@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TopRatedFragment extends Fragment{
+public class WhiteFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	
-    	View rootView = inflater.inflate(R.layout.top_rated_fragment_layout, container, false);
-    	
+    	View rootView = inflater.inflate(R.layout.white_fragment_layout, container, false);
     	return rootView;
     }
 }
