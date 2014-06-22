@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 
 public class MainActivity extends SherlockFragmentActivity {
 
@@ -73,16 +74,27 @@ public class MainActivity extends SherlockFragmentActivity {
 			spec.setContent(R.id.fakeTabContent);
 			spec.setIndicator(tabName);
 			tabHost.addTab(spec);
-			
 		}
-
-		//tabHost.setCurrentTab(0);
 
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getSupportActionBar();
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 		
 		viewPager.setAdapter(mAdapter);
+		
+		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
+			
+			@Override
+			public void onTabChanged(String tabId) {
+				for (int i = 0; i < tabs.length; i++) {
+					if (tabId.equals(tabs[i])) {
+						viewPager.setCurrentItem(i);
+						break;
+					}
+				}
+			}
+		});
+
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			
 			@Override
