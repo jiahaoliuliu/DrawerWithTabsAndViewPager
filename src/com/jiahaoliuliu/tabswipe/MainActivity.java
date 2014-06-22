@@ -15,8 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class MainActivity extends SherlockFragmentActivity implements
-	ActionBar.TabListener {
+public class MainActivity extends SherlockFragmentActivity {
 
 	private DrawerLayout mDrawerLayout;
 	private LinearLayout mDrawer;
@@ -68,17 +67,20 @@ public class MainActivity extends SherlockFragmentActivity implements
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 		
 		viewPager.setAdapter(mAdapter);
+		/*
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		for (String tabName: tabs) {
 			actionBar.addTab(actionBar.newTab().setText(tabName).setTabListener(this));
-		}
+		}*/
 		
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int position) {
-				actionBar.setSelectedNavigationItem(position);
+				/*
+				 * actionBar.setSelectedNavigationItem(position);
+				 */
 			}
 			
 			@Override
@@ -95,6 +97,7 @@ public class MainActivity extends SherlockFragmentActivity implements
 		});
 	}
 
+	/*
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		viewPager.setCurrentItem(tab.getPosition());
@@ -109,7 +112,7 @@ public class MainActivity extends SherlockFragmentActivity implements
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

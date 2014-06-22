@@ -16,9 +16,9 @@ public class TabsPagerAdapter extends FragmentPagerAdapter{
 		case 0:
 			return new TopRatedFragment();
 		case 1:
-			return new TopRatedFragment();
+			return new GamesFragment();
 		case 2:
-			return new TopRatedFragment();
+			return new MoviesFragment();
 		}
 		
 		return null;
