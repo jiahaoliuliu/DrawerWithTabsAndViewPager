@@ -41,8 +41,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
 		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setHomeButtonEnabled(true);
-		
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 		mDrawerToggle = new ActionBarDrawerToggle(
 				this,
 				mDrawerLayout,
@@ -64,7 +64,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		
 		// Initialization
-		
 		final TabHost tabHost=(TabHost)findViewById(android.R.id.tabhost);
 		tabHost.setup();
 		
