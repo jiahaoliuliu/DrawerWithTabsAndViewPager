@@ -1,5 +1,5 @@
-TabSwipe
-========
+Drawer with Tab and ViewPager
+=============================
 
 This is a project with Drawer(left) + tab host + view pager. The tabs and the pagers are linked, so if you clicks on any tab, the corresponding page will be shown. In the same way, if you swipe any viewpager, the corresponding tab will be pointed.
 
